@@ -2,3 +2,6 @@ venv
 venv\
 .venv
 .venvz
+
+.mypy_cache
+_pycache_
