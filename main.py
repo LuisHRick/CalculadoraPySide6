@@ -15,10 +15,10 @@ if __name__ == '__main__':
     window.setWindowIcon(icon)
     app.setWindowIcon(icon)
 
-    label1 = QLabel('Texto Válido')
-    label1.setStyleSheet('font-size: 50px;')
-    window.addWidgetToVLayout(label1)
-    window.adjustFixedSize()
+    # label1 = QLabel('Texto Válido')
+    # label1.setStyleSheet('font-size: 50px;')
+    # window.addWidgetToVLayout(label1)
+    # window.adjustFixedSize()
 
     # Executa tudo
     window.adjustFixedSize()
