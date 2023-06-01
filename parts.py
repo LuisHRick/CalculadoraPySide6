@@ -1,32 +1,36 @@
-import sys
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QLineEdit
 
-from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QApplication
+from components import BIG_FONT_SIZE, MINIMUN_WIDTH, TEXT_MARGIN
 
-from components import WINDOW_ICON_PATH, setupTheme
-from display import Display, Info
-from main_window import MainWindow
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    setupTheme()
-    window = MainWindow()
+# Display
+class Display(QLineEdit):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.configStyle()
 
-    # Define um ícone
-    icon = QIcon(str(WINDOW_ICON_PATH))
-    window.setWindowIcon(icon)
-    app.setWindowIcon(icon)
+    def configStyle(self):
+        margins = [TEXT_MARGIN for _ in range(4)]
+        self.setStyleSheet(f'font-size: {BIG_FONT_SIZE}px')
+        self.setMinimumHeight(BIG_FONT_SIZE * 2)
+        self.setMinimumWidth(MINIMUN_WIDTH)
+        self.setAlignment(Qt.AlignmentFlag.AlignRight)
+        self.setTextMargins(*margins)
 
-    # Info
-    info = Info('2.0 ^ 10.0 = 1024')
-    window.addToVLayout(info)
+# Label com histórico
 
-    # Display
-    display = Display()
-    display.setPlaceholderText('Digite aqui')
-    window.addToVLayout(display)
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QLabel
 
-    # Executa tudo
-    window.adjustFixedSize()
-    window.show()
-    app.exec()
+from components import SMALL_FONT_SIZE
+
+
+class Info(QLabel):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.configStyle()
+
+    def configStyle(self):
+        self.setStyleSheet(f'font-size {SMALL_FONT_SIZE}p')
+        self.setAlignment(Qt.AlignmentFlag.AlignRight)
