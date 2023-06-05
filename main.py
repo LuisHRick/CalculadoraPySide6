@@ -5,7 +5,7 @@ from PySide6.QtWidgets import QApplication
 
 from components import WINDOW_ICON_PATH, setupTheme
 from main_window import MainWindow
-from parts import Button, Display, Info
+from parts import Button, ButtonsGrid, Display, Info
 
 if __name__ == '__main__':
     app = QApplication(sys.argv) # type: ignore
@@ -19,16 +19,20 @@ if __name__ == '__main__':
 
     # Info
     info = Info('2.0 ^ 10.0 = 1024')
-    window.addToVLayout(info)
+    window.addWidgetToVLayout(info)
 
     # Display
     display = Display()
     display.setPlaceholderText('Digite aqui')
-    window.addToVLayout(display)
+    window.addWidgetToVLayout(display)
+
+    # Grid
+    buttonsGrid = ButtonsGrid()
+    window.vLayout.addLayout(buttonsGrid)
 
     # Button
     button = Button('Button')
-    window.addToVLayout(button)
+    buttonsGrid.addWidget(button)
 
     # Executa tudo
     window.adjustFixedSize()

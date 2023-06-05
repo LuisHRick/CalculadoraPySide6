@@ -1,5 +1,5 @@
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QLineEdit, QPushButton
+from PySide6.QtWidgets import QGridLayout, QLineEdit, QPushButton
 
 from components import (BIG_FONT_SIZE, MEDIUM_FONT_SIZE, MINIMUN_WIDTH,
                         TEXT_MARGIN)
@@ -50,3 +50,15 @@ class Button(QPushButton):
         self.setFont(font)
         self.setMinimumSize(75, 75)
         self.setProperty('cssClass', 'specialButton')
+
+class ButtonsGrid(QGridLayout):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self._grid_mark = [
+            ['C', '<', '^', '/'],
+            ['7', '8', '9', '*'],
+            ['4', '5', '6', '-'],
+            ['1', '2', '3', '+'],
+            ['',  '0', '.', '='],
+        ]
