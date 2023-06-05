@@ -1,8 +1,8 @@
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QGridLayout, QLineEdit, QPushButton
+from PySide6.QtWidgets import QGridLayout, QLabel, QLineEdit, QPushButton
 
 from components import (BIG_FONT_SIZE, MEDIUM_FONT_SIZE, MINIMUN_WIDTH,
-                        TEXT_MARGIN)
+                        SMALL_FONT_SIZE, TEXT_MARGIN)
 from utils import isEmpty, isNumOrDot
 
 
@@ -22,11 +22,6 @@ class Display(QLineEdit):
 
 # Label com histórico
 
-from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QLabel
-
-from components import SMALL_FONT_SIZE
-
 
 class Info(QLabel):
     def __init__(self, *args, **kwargs):
@@ -41,7 +36,7 @@ class Info(QLabel):
 # Buttons
 
 class Button(QPushButton):
-    def __init__ (self, *args, **kwargs): 
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.configStyle()
 
@@ -50,14 +45,14 @@ class Button(QPushButton):
         font.setPixelSize(MEDIUM_FONT_SIZE)
         self.setFont(font)
         self.setMinimumSize(75, 75)
-        
+
 
 class ButtonsGrid(QGridLayout):
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self._gridMask = [
-            ['C', '◀', '^', '/'],
+            ['C', '<', '^', '/'],
             ['7', '8', '9', '*'],
             ['4', '5', '6', '-'],
             ['1', '2', '3', '+'],
