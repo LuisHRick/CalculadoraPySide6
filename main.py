@@ -30,9 +30,6 @@ if __name__ == '__main__':
     buttonsGrid = ButtonsGrid()
     window.vLayout.addLayout(buttonsGrid)
 
-    # Button
-    button = Button('Button')
-    buttonsGrid.addWidget(button)
 
     # Executa tudo
     window.adjustFixedSize()
