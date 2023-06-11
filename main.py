@@ -18,7 +18,7 @@ if __name__ == '__main__':
     app.setWindowIcon(icon)
 
     # Info
-    info = Info('2.0 ^ 100.0 = 10240') # type: ignore
+    info = Info('2.0 ^ 100.0 = 1024') # type: ignore
     window.addWidgetToVLayout(info)
 
     # Display
