@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QGridLayout, QLabel, QLineEdit, QPushButton
 
 from components import (BIG_FONT_SIZE, MEDIUM_FONT_SIZE, MINIMUN_WIDTH,
                         SMALL_FONT_SIZE, TEXT_MARGIN)
-from utils import isEmpty, isNumOrDot
+from utils import isEmpty, isNumOrDot, isValidNumber
 
 
 # Display
@@ -45,7 +45,7 @@ class Button(QPushButton):
         font.setPixelSize(MEDIUM_FONT_SIZE)
         self.setFont(font)
         self.setMinimumSize(75, 75)
-        self.setCheckable(True)
+        self.setCheckable(False)
 
 
 class ButtonsGrid(QGridLayout):
@@ -84,4 +84,9 @@ class ButtonsGrid(QGridLayout):
 
     def _insertButtonTextToDisplay(self, button):
         button_text = button.text()
+        newDisplayValue = self.display.text() + button_text
+
+        if not isValidNumber(newDisplayValue):
+            return
+
         self.display.insert(button_text)
