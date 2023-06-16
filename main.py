@@ -5,7 +5,7 @@ from PySide6.QtWidgets import QApplication
 
 from components import WINDOW_ICON_PATH, setupTheme
 from main_window import MainWindow
-from parts import Button, ButtonsGrid, Display, Info
+from parts import ButtonsGrid, Display, Info
 
 if __name__ == '__main__':
     app = QApplication(sys.argv) # type: ignore
