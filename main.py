@@ -27,7 +27,7 @@ if __name__ == '__main__':
     window.addWidgetToVLayout(display)
 
     # Grid
-    buttonsGrid = ButtonsGrid(displayn info) # type: ignore
+    buttonsGrid = ButtonsGrid(display, info) # type: ignore
     window.vLayout.addLayout(buttonsGrid)
 
 
