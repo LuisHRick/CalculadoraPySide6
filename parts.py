@@ -49,7 +49,7 @@ class Button(QPushButton):
 
 
 class ButtonsGrid(QGridLayout):
-    def __init__(self, display: Display, *args, **kwargs):
+    def __init__(self, display: Display, info: Info, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self._gridMask = [
@@ -60,7 +60,18 @@ class ButtonsGrid(QGridLayout):
             ['',  '0', '.', '='],
         ]
         self.display = display
+        self.info = info
+        self._equation = ''
         self._makeGrid()
+
+    @property
+    def equation(self):
+        return self._equation
+
+    @equation.setter
+    def equation(self, value):
+        self._equation = value
+        self.info.setText(value)
 
     def _makeGrid(self):
         for rowNumber, rowData in enumerate(self._gridMask):

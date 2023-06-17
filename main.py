@@ -18,7 +18,7 @@ if __name__ == '__main__':
     app.setWindowIcon(icon)
 
     # Info
-    info = Info('2.0 ^ 100.0 = 1024') # type: ignore
+    info = Info('') # type: ignore
     window.addWidgetToVLayout(info)
 
     # Display
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     window.addWidgetToVLayout(display)
 
     # Grid
-    buttonsGrid = ButtonsGrid(display) # type: ignore
+    buttonsGrid = ButtonsGrid(displayn info) # type: ignore
     window.vLayout.addLayout(buttonsGrid)
 
 
