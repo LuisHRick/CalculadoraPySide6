@@ -94,8 +94,7 @@ class ButtonsGrid(QGridLayout):
         text = button.text()
 
         if text == 'C':
-            slot = self._makeSlot(self.display.clear)
-            self._connectButtonClicked(button, slot)
+            self._connectButtonClicked(button, self._clear)
 
 
     def _makeSlot(self, func, *args, **kwargs):
@@ -112,3 +111,6 @@ class ButtonsGrid(QGridLayout):
             return
 
         self.display.insert(button_text)
+
+    def _clear(self):
+        self.display.clear()
