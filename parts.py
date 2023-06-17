@@ -62,9 +62,12 @@ class ButtonsGrid(QGridLayout):
         self.display = display
         self.info = info
         self._equation = ''
+        self._equationInitial = ''
         self._left = None
         self._right = None
         self._op = None
+
+        self.equation = self._equationInitial
         self._makeGrid()
 
     @property
@@ -119,11 +122,15 @@ class ButtonsGrid(QGridLayout):
         self.display.insert(button_text)
 
     def _clear(self):
+        self._right = None
+        self._op = None
+        self._left = None
+        self.equation = self._equationInitial
         self.display.clear()
 
     def _operatorClicked(self, button):
-        ButtonText = button.text()
-        displayText = self.display.text()
+        ButtonText = button.text() # +-/*
+        displayText = self.display.text() # número _left
         self.display.clear()
 
         if not isValidNumber(displayText) and self._left is None:
