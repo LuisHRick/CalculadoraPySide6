@@ -13,7 +13,7 @@ if __name__ == '__main__':
     window = MainWindow()
 
     # Define um ícone
-    icon = QIcon(str(WINDOW_ICON_PATH))
+    icon = QIcon(str(WINDOW_ICON_PATH)) # type: ignore
     window.setWindowIcon(icon)
     app.setWindowIcon(icon)
 
