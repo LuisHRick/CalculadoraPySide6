@@ -29,7 +29,7 @@ class Info(QLabel):
         self.configStyle()
 
     def configStyle(self):
-        self.setStyleSheet(f'font-size {SMALL_FONT_SIZE}p')
+        self.setStyleSheet(f'font-size {SMALL_FONT_SIZE}px')
         self.setAlignment(Qt.AlignmentFlag.AlignRight)
 
 
@@ -62,8 +62,9 @@ class ButtonsGrid(QGridLayout):
         self.display = display
         self.info = info
         self._equation = ''
-
-
+        self._left = None
+        self._right = None
+        self._op = None
         self._makeGrid()
 
     @property
@@ -96,6 +97,11 @@ class ButtonsGrid(QGridLayout):
         if text == 'C':
             self._connectButtonClicked(button, self._clear)
 
+        if text in "+-/*":
+            self._connectButtonClicked(button,
+                                       self._makeSlot(self._operatorClicked, button)
+                                       )
+
 
     def _makeSlot(self, func, *args, **kwargs):
         @Slot(bool)
@@ -114,3 +120,17 @@ class ButtonsGrid(QGridLayout):
 
     def _clear(self):
         self.display.clear()
+
+    def _operatorClicked(self, button):
+        ButtonText = button.text()
+        displayText = self.display.text()
+        self.display.clear()
+
+        if not isValidNumber(displayText) and self._left is None:
+            return
+        
+        if self._left is None:
+            self._left = float(displayText)
+        
+        self._op = ButtonText
+        self.equation = f'{self._left} {self._op} ??'
