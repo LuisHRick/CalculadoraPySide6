@@ -153,3 +153,14 @@ class ButtonsGrid(QGridLayout):
         
         self._right = float(displayText)
         self.equation = f'{self._left} {self._op} {self._right}'
+
+        try:
+            result = eval(self.equation)
+        except ZeroDivisionError:
+            result = 0
+
+        self.display.clear()
+        self.info.setText(f'{self.equation} = {result}')
+
+        self._left = result
+        self._right = None
