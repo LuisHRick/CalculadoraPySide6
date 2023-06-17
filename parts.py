@@ -62,6 +62,8 @@ class ButtonsGrid(QGridLayout):
         self.display = display
         self.info = info
         self._equation = ''
+
+        
         self._makeGrid()
 
     @property
